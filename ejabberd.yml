@@ -1,0 +1,43 @@
+loglevel: 4
+log_rotate_size: 10485760
+log_rotate_date: ""
+log_rotate_count: 1
+log_rate_limit: 100
+
+hosts:
+  - "localhost"
+
+listen: 
+  - 
+    port: 5222
+    module: ejabberd_c2s
+  - 
+    port: 5280
+    module: ejabberd_http
+    register: true
+    web_admin: true
+    
+auth_method: internal
+
+acl:
+  admin:
+    user:
+      - "admin": "localhost"
+  local: 
+    user_regexp: ""
+  loopback:
+    ip:
+      - "127.0.0.0/8"
+
+access:
+  register: 
+    all: allow
+  trusted_network: 
+    loopback: allow
+
+modules:
+  mod_register:
+    ip_access: trusted_network
+    access: register
+  Elixir.Demo: {}
+
