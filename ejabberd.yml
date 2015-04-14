@@ -32,6 +32,8 @@ acl:
 access:
   register: 
     all: allow
+  configure:
+    admin: allow
   trusted_network: 
     loopback: allow
 
